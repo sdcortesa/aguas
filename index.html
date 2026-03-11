@@ -8,14 +8,40 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-        <div class="viewer-watermark">
-        <span>Demo para <br> Proyectos <br>de Aguas</span>
+  <div class="login-screen" id="loginScreen">
+      <div class="viewer-logo">
+      <img src="./img/logo.png" alt="Logo de la empresa" />
       </div>
-  <main class="page">
+    <div class="login-card">
+      <p class="login-eyebrow">Acceso privado</p>
+      <h1 class="login-title">Demo PTAR 3D</h1>
+      <p class="login-text">
+        Ingresa el código para acceder a la presentación interactiva
+      </p>
+
+      <label class="login-label" for="accessCode">Código</label>
+      <input
+        id="accessCode"
+        class="login-input"
+        type="password"
+        placeholder="Ingresa el código"
+        autocomplete="off"
+      />
+
+      <button id="loginButton" class="login-button" type="button">Entrar</button>
+      <p id="loginError" class="login-error">Código incorrecto. Inténtalo de nuevo.</p>
+    </div>
+  </div>
+
+  <div class="viewer-watermark">
+    <span>Demo para <br> Proyectos <br>de Aguas</span>
+  </div>
+
+  <main class="page hidden-page" id="appContent">
     <aside class="panel">
       <section>
         <p class="eyebrow">Demo interactiva</p>
-        <h1>PTAR Compacta Modular</h1>
+        <h1>PTAR Modular</h1>
         <p class="lead">
           Visualización 3D para mostrar sistemas de tratamiento de agua de forma clara.
         </p>
@@ -104,5 +130,39 @@
       </div>
     </section>
   </main>
+
+  <script>
+    const ACCESS_CODE = "aguas";
+
+    const accessCodeInput = document.getElementById("accessCode");
+    const loginButton = document.getElementById("loginButton");
+    const loginError = document.getElementById("loginError");
+
+    function unlockDemo() {
+      const enteredCode = accessCodeInput.value.trim();
+
+      if (enteredCode === ACCESS_CODE) {
+        document.body.classList.add("unlocked");
+        loginError.style.display = "none";
+        accessCodeInput.value = "";
+      } else {
+        loginError.style.display = "block";
+        accessCodeInput.focus();
+        accessCodeInput.select();
+      }
+    }
+
+    loginButton.addEventListener("click", unlockDemo);
+
+    accessCodeInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        unlockDemo();
+      }
+    });
+
+    window.addEventListener("load", () => {
+      accessCodeInput.focus();
+    });
+  </script>
 </body>
 </html>
