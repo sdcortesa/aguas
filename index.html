@@ -3,50 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D PETAR</title>
+  <title>Demo PTAR 3D</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: #ffffff;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-    }
-
-    model-viewer {
-      width: 100%;
-      height: 100vh;
-      background: #ffffff;
-      --poster-color: #ffffff;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+        <div class="viewer-watermark">
+        <span>Demo para <br> Proyectos <br>de Aguas</span>
+      </div>
+  <main class="page">
+    <aside class="panel">
+      <section>
+        <p class="eyebrow">Demo interactiva</p>
+        <h1>PTAR Compacta Modular</h1>
+        <p class="lead">
+          Visualización 3D para mostrar sistemas de tratamiento de agua de forma clara.
+        </p>
+      </section>
 
-  <model-viewer
-    src="./base.glb"
-    camera-controls
-    auto-rotate
-    auto-rotate-delay="0"
-    rotation-per-second="8deg"
+      <section class="sheet">
+        <h2 class="sheet-title">Ficha del sistema</h2>
+        <p class="sheet-note">
+          Los recuadros de color se relacionan con las partes del modelo 3D y ayudan a identificar el sistema rápidamente.
+        </p>
 
-    shadow-intensity="1.0"
-    shadow-softness="0.8"
-    exposure="1.0"
+        <div class="legend">
+          <article class="legend-item">
+            <div class="swatch" style="background: var(--c-tanques);"></div>
+            <div>
+              <strong>Tanques y depósitos</strong>
+              <span>Componentes principales de almacenamiento y tratamiento primario.</span>
+            </div>
+          </article>
 
-    environment-image="neutral"
-    tone-mapping="aces"
+          <article class="legend-item">
+            <div class="swatch" style="background: var(--c-tuberias);"></div>
+            <div>
+              <strong>Red de tuberías</strong>
+              <span>Conducción, conexión y distribución entre módulos del sistema.</span>
+            </div>
+          </article>
 
-    camera-orbit="35deg 68deg 140%"
-    min-camera-orbit="35deg 68deg 140%"
-    max-camera-orbit="auto 85deg 140%"
-    field-of-view="28deg"
+          <article class="legend-item">
+            <div class="swatch" style="background: var(--c-modulo);"></div>
+            <div>
+              <strong>Módulos de proceso</strong>
+              <span>Equipos y unidades donde ocurre la separación y tratamiento del agua.</span>
+            </div>
+          </article>
 
-    interaction-prompt="none"
-    disable-pan>
-  </model-viewer>
+          <article class="legend-item">
+            <div class="swatch" style="background: var(--c-estructura);"></div>
+            <div>
+              <strong>Estructura auxiliar</strong>
+              <span>Bases, soportes y elementos de apoyo del conjunto técnico.</span>
+            </div>
+          </article>
 
+          <article class="legend-item">
+            <div class="swatch" style="background: var(--c-equipos);"></div>
+            <div>
+              <strong>Equipos complementarios</strong>
+              <span>Elementos secundarios para operación, inspección y mantenimiento.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </aside>
+
+    <section class="viewer-wrap">
+      <header class="viewer-head">
+        <div>
+          <h2 class="viewer-title">Sistema base</h2>
+          <p class="viewer-subtitle">Modelo 3D interactivo para presentación de soluciones PTAR</p>
+        </div>
+        <div class="badge">Vista interactiva</div>
+      </header>
+
+      <model-viewer
+        src="./base.glb"
+        camera-controls
+        auto-rotate
+        auto-rotate-delay="0"
+        rotation-per-second="6deg"
+        shadow-intensity="1"
+        shadow-softness="0.9"
+        exposure="1.05"
+        environment-image="neutral"
+        tone-mapping="aces"
+        camera-orbit="35deg 72deg 95%"
+        min-camera-orbit="auto auto 95%"
+        max-camera-orbit="auto auto 95%"
+        field-of-view="22deg"
+        interaction-prompt="none"
+        disable-pan>
+      </model-viewer>
+
+      <div class="viewer-logo">
+        <img src="./img/logo.png" alt="Logo de la empresa" />
+      </div>
+    </section>
+  </main>
 </body>
 </html>
