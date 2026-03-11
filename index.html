@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D PETAR</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #ffffff;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100vh;
+      background: #ffffff;
+      --poster-color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <model-viewer
+    src="./cabana-tusa.glb"
+    camera-controls
+    auto-rotate
+    auto-rotate-delay="0"
+    rotation-per-second="8deg"
+
+    shadow-intensity="1.0"
+    shadow-softness="0.8"
+    exposure="1.0"
+
+    environment-image="neutral"
+    tone-mapping="aces"
+
+    camera-orbit="35deg 68deg 140%"
+    min-camera-orbit="35deg 68deg 140%"
+    max-camera-orbit="auto 85deg 140%"
+    field-of-view="28deg"
+
+    interaction-prompt="none"
+    disable-pan>
+  </model-viewer>
+
+</body>
+</html>
